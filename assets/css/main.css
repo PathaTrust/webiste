@@ -906,8 +906,7 @@ section,
 .hero {
   min-height: 100vh;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)),
-    url("./../img/pexels-vijay-krishnawat-2932162-13518888.jpg") top center
-      no-repeat;
+    url("./../img/hero.jpg") top center no-repeat;
   background-size: cover;
   width: 100%;
   position: relative;
@@ -2903,15 +2902,17 @@ section,
   font-weight: 700;
 }
 .project-img {
-  width: 240px;
+  width: 260px;
   height: 140px;
   margin-bottom: 1rem;
+  /* border: solid 2px #24576a; */
 }
+
 .project-img img {
   overflow: hidden;
   height: 100%;
   width: 100%;
-  object-fit: cover;
+  object-fit: fill;
 }
 @media all and (max-width: 420px) {
   .project-img {
