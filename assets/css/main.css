@@ -610,14 +610,11 @@ p {
   padding-top: 50px;
 }
 
-.footer .footer-about .logo {
-  line-height: 1;
-  margin-bottom: 25px;
-}
-
 .footer .footer-about .logo img {
-  max-height: 40px;
+  width: 160px;
   margin-right: 6px;
+  object-fit: contain;
+  overflow: hidden;
 }
 
 .footer .footer-about .logo span {
@@ -626,6 +623,7 @@ p {
   font-weight: 700;
   letter-spacing: 1px;
   font-family: var(--heading-font);
+  margin-top: 10px;
 }
 
 .footer .footer-about p {
@@ -634,22 +632,18 @@ p {
 }
 
 .footer .social-links a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 40px;
   height: 40px;
-  border-radius: 50%;
-  border: 1px solid color-mix(in srgb, var(--default-color), transparent 50%);
-  font-size: 16px;
-  color: color-mix(in srgb, var(--default-color), transparent 50%);
+  /* border-radius: 50%; */
+  /* border: 1px solid color-mix(in srgb, var(--default-color), transparent 50%); */
+  font-size: 24px;
+  color: color-mix(in srgb, var(--default-color));
   margin-right: 10px;
-  transition: 0.3s;
+  transition: 0.7s;
 }
 
 .footer .social-links a:hover {
-  color: var(--default-color);
-  border-color: var(--default-color);
+  color: #ffc470;
 }
 
 .footer h4 {
@@ -981,7 +975,7 @@ section,
 
 @media (max-width: 640px) {
   .hero h1 {
-    font-size: 36px;
+    font-size: 50px;
   }
 
   .hero .btn-get-started,
@@ -1588,7 +1582,7 @@ section,
 .team .member img {
   border-radius: 15px;
   overflow: hidden;
-  height: 200px;
+  /* height: 200px; */
   object-fit: cover;
 }
 
@@ -1607,7 +1601,8 @@ section,
   font-style: italic;
   display: block;
   font-size: 14px;
-  color: color-mix(in srgb, var(--default-color), transparent 40%);
+  color: color-mix(in srgb, var(--default-color), transparent 25%);
+  font-weight: 500;
 }
 
 .team .member .social {
@@ -1615,28 +1610,31 @@ section,
   margin-bottom: 10px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 .team .member .social a {
   color: color-mix(in srgb, var(--default-color), transparent 60%);
-  transition: 0.3s;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  display: flex;
+  transition: 0.5s;
+  /* margin: 0 10px; */
+  /* border-radius: 50%; */
+  /* width: 40px;
+  height: 40px; */
+  /* display: flex;
   align-items: center;
-  justify-content: center;
-  border: 1px solid color-mix(in srgb, var(--default-color), transparent 60%);
+  justify-content: center; */
+  /* border: 1px solid color-mix(in srgb, var(--default-color), transparent 60%); */
 }
 
-.team .member .social a:hover {
-  color: var(--accent-color);
-  border-color: var(--accent-color);
+.team .member .social .linkedin:hover {
+  color: #0067c7;
+}
+.team .member .social .instagram:hover {
+  color: #d400ca;
 }
 
 .team .member .social i {
-  font-size: 18px;
+  font-size: 28px;
   margin: 0 2px;
 }
 
@@ -2925,4 +2923,8 @@ section,
 }
 #founder {
   margin-top: 7rem;
+}
+#carousel .swiper-slide img {
+  object-fit: cover;
+  overflow: hidden;
 }
