@@ -242,10 +242,34 @@
   document.addEventListener("scroll", navmenuScrollspy);
 })();
 
+// Custom message modal functionality
+const messageModal = document.getElementById("messageModal");
+const closeMessageBtn = document.getElementsByClassName("close-message")[0];
+const messageText = document.getElementById("messageText");
+
+// Function to open the message modal
+function showMessageModal(message) {
+  messageText.textContent = message;
+  messageModal.style.display = "block";
+}
+
+// Close the message modal
+closeMessageBtn.onclick = function () {
+  messageModal.style.display = "none";
+};
+
+// Close modal on click outside
+window.onclick = function (event) {
+  if (event.target == messageModal) {
+    messageModal.style.display = "none";
+  }
+};
+
 // Modal functionality
 const modal = document.getElementById("volunteerModal");
 const btn = document.getElementById("openModal");
 const span = document.getElementsByClassName("close")[0];
+const loader = document.getElementById("loader"); // Loader element
 
 // Function to disable scrolling and account for scrollbar
 function disableScroll() {
@@ -289,6 +313,9 @@ const form = document.getElementById("volunteerForm");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
+  // Show loader
+  loader.style.display = "block";
+
   fetch(scriptURL, {
     method: "POST",
     body: new FormData(form),
@@ -303,8 +330,11 @@ form.addEventListener("submit", (e) => {
       return response.json();
     })
     .then((data) => {
+      // Hide loader
+      loader.style.display = "none";
+
       if (data.status === "success") {
-        alert("Form successfully submitted!");
+        showMessageModal("Thank you for  showing Interest in Patha!"); // Use custom modal here
         form.reset(); // Optionally reset the form
         modal.style.display = "none"; // Close modal after successful submission
         enableScroll(); // Re-enable scrolling
@@ -313,7 +343,9 @@ form.addEventListener("submit", (e) => {
       }
     })
     .catch((error) => {
+      // Hide loader
+      loader.style.display = "none";
       console.error("Error:", error);
-      alert("Error submitting form!");
+      showMessageModal("Error submitting form!"); // Use custom modal here
     });
 });
