@@ -56,7 +56,7 @@
               </ul>
             </li>
             <li><a href="./team.html">Team</a></li>
-            <li><a href="#!">Volunteer</a></li>
+            <li><a href="#!" id="openModal">Volunteer</a></li>
             <li><a href="#!">Donate</a></li>
             <li><a href="#footer">Contact Us</a></li>
           </ul>
@@ -265,6 +265,70 @@
         <h2>Our Programs</h2>
       </div>
       <!-- End Section Title -->
+
+      <!-- Volunteer section -->
+      <div id="volunteerModal" class="modal">
+        <div class="modal-content">
+          <h2>Volunteer Registration Form <span class="close">&times;</span></h2>
+
+
+          <form id="volunteerForm">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName" placeholder="Enter your First name" required>
+
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" placeholder="Enter your Last name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your Email" required>
+
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter your Phone Number" required>
+
+            <label for="address">Address</label>
+            <textarea id="address" name="address" placeholder="Enter your Address" required></textarea>
+
+            <label for="gender">Gender</label>
+            <select id="gender" name="gender" required>
+              <option value="select-one" disabled selected="selected">Select an option</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+
+            <label for="skills">Skills/Interests</label>
+            <textarea id="skills" name="skills" placeholder="Enter your Skills/Interests" required></textarea>
+
+            <label for="occupation">Occupation</label>
+            <select id="occupation" name="occupation" required>
+              <option value="select-one" disabled selected="selected">Select an option</option>
+              <option value="College Student">College Student</option>
+              <option value="Business Person">Business Person</option>
+              <option value="Homemaker">Homemaker</option>
+              <option value="Professional">Professional</option>
+              <option value="Retired">Retired</option>
+              <option value="Self Employed">Self Employed</option>
+              <option value="Others">Others</option>
+            </select>
+
+            <label for="source">How did you get to know about Patha Trust?</label>
+            <select id="source" name="source" required>
+              <option value="select-one" disabled selected="selected">Select an option</option>
+              <option value="Friends">Friends</option>
+              <option value="Family">Family</option>
+              <option value="Social Media">Social Media</option>
+              <option value="Website">Website</option>
+              <option value="Enrollment Drive">Enrollment Drive</option>
+              <option value="Others">Others</option>
+            </select>
+
+            <label for="comments">Any Comments/Questions?</label>
+            <textarea id="comments" name="comments" placeholder="Enter any Comments/Questions"></textarea>
+
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
 
       <div class="container pb-5">
         <div class="row gy-4">
