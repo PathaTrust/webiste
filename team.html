@@ -55,8 +55,11 @@
                 <li><a href="./index.html#services">Patha Pragati</a></li>
               </ul>
             </li>
-            <li><a href="#!">Volunteer</a></li>
-            <li><a href="#!">Donate</a></li>
+            <!-- <li><a href="#!">Volunteer</a></li> -->
+            <!-- <li><a href="./payment/index.html" target="_blank">Donate</a></li> -->
+            <li>
+              <a href="#!" class="custom-tooltip" data-bs-toggle="tooltip" data-bs-title="Updating soon">Donate</a>
+            </li>
             <li><a href="#footer">Contact Us</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -315,9 +318,11 @@
       </div>
       <hr>
       <div class="d-flex justify-content-center pb-2">
-        <div class="px-3"><a href="#">Terms and Condition</a></div>
-        <div class="px-3"><a href="#">Privacy policy</a></div>
-        <div class="px-3"><a href="#">Refund and Cancellation policy</a></div>
+        <div class="px-3"><a href="#" data-bs-toggle="tooltip" data-bs-title="Updating soon">Terms and Condition</a>
+        </div>
+        <div class="px-3"><a href="#" data-bs-toggle="tooltip" data-bs-title="Updating soon">Privacy policy</a></div>
+        <div class="px-3"><a href="#" data-bs-toggle="tooltip" data-bs-title="Updating soon">Refund and Cancellation
+            policy</a></div>
 
       </div>
     </div>
@@ -339,7 +344,14 @@
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-
+  <script>
+    const tooltipTriggerList = document.querySelectorAll(
+      '[data-bs-toggle="tooltip"]'
+    );
+    const tooltipList = [...tooltipTriggerList].map(
+      (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
+    );
+  </script>
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
 </body>

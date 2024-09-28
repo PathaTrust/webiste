@@ -32,6 +32,12 @@
 
     <!-- Main CSS File -->
     <link href="./../assets/css/main.css" rel="stylesheet" />
+    <style>
+        body.modal-open {
+            overflow: hidden;
+        }
+    </style>
+
 </head>
 
 <body class="index-page">
@@ -73,23 +79,37 @@
             <h1>Donation Page</h1>
             <label for="name">Name</label>
             <input type="text" id="name" name="name" placeholder="Enter your Name" required>
+            <label for="name">PAN Number</label>
+            <input type="text" id="pan" name="pan" placeholder="Enter your PAN Number" required>
             <label for="email">Email</label>
             <input type="email" id="email" name="email" placeholder="Enter your Email" required>
             <label for="phone">Phone Number</label>
             <input type="tel" id="phone" name="phone" placeholder="Enter your Phone Number" required>
             <label for="address">Address</label>
             <textarea id="address" name="address" placeholder="Enter your Address" required></textarea>
+            <label for="pin">Pincode</label>
+            <input type="number" id="pin" name="pin" placeholder="Enter Pin code" required />
+            <label for="State">State</label>
+            <input type="text" id="State" name="State" placeholder="Enter State" required />
             <label for="amount">Amount</label>
             <input type="number" id="amount" placeholder="Enter Amount" required />
             <button id="generate" type="button">Generate QR Code</button>
         </form>
         <!-- <input type="text" id="upiId" placeholder="Enter UPI ID" /> -->
-
+        <div class="note">
+            <h4>Note</h4>
+            <ol>
+                <li>Only Indian Rupees (INR) are accepted </li>
+                <li>Patha Trust currently does not hold 80G certification, we assure you that all contributions will
+                    directly support our mission and vision. Your support is invaluable and will greatly help us to
+                    achieve our goals.</li>
+            </ol>
+        </div>
         <div id="qrModal" class="modal" style="display: none;">
             <div class="modal-content">
                 <h2>Scan the QR Code</h2>
                 <div id="qrcodeModal"></div>
-                <button class="close">Close</button>
+                <button class="close-payment">Close</button>
             </div>
         </div>
 
@@ -167,27 +187,37 @@
                 var name = $('#name').val();
 
                 $('#qrcodeModal').empty(); // Clear previous QR code
+                $('#paymentLink').remove(); // Clear previous payment link
 
                 if (upiId && amount && name) {
+                    // Generate UPI link
                     var upiLink = `upi://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(name)}&am=${encodeURIComponent(amount)}&cu=INR`;
+
+                    // Generate QR code
                     $('#qrcodeModal').qrcode({
                         text: upiLink,
                         width: 200,
                         height: 200
                     });
 
-                    // Show the modal
+                    // Generate clickable payment link
+                    var paymentLink = `<a href="${upiLink}" id="paymentLink" target="_blank">Click here to pay via UPI</a>`;
+                    $('#qrcodeModal').after(paymentLink);
+
+                    // Show the modal and disable scrolling
                     $('#qrModal').fadeIn();
+                    $('body').addClass('modal-open'); // Disable scrolling
                 } else {
                     alert('Please enter all fields');
                 }
             });
 
             // Close the modal and reset form
-            $('.close').click(function () {
+            $('.close-payment').click(function () {
                 $('#qrModal').fadeOut();
                 alert('Thanks');
                 $('#Donation')[0].reset(); // Reset form fields
+                $('body').removeClass('modal-open'); // Enable scrolling again
             });
         });
 
