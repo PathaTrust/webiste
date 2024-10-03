@@ -284,6 +284,19 @@ function enableScroll() {
   document.body.style.overflow = "auto";
   document.body.style.paddingRight = "0"; // Reset padding
 }
+// Add inline styles for smooth transition
+modal.style.transition = "opacity 1s ease-in-out"; // Smooth fade-in and fade-out
+modal.style.opacity = 0; // Initial hidden state
+
+window.onload = function () {
+  setTimeout(() => {
+    modal.style.display = "block"; // Set display to block
+    setTimeout(() => {
+      modal.style.opacity = 1; // Gradually change opacity to 1
+    }, 10); // Small delay to ensure the transition applies smoothly
+    disableScroll();
+  }, 1500);
+};
 
 // Open the modal
 btn.onclick = function () {
