@@ -270,6 +270,9 @@ const modal = document.getElementById("volunteerModal");
 const btn = document.getElementById("openModal");
 const span = document.getElementsByClassName("close")[0];
 const loader = document.getElementById("loader"); // Loader element
+const submitBtn = document.querySelector(
+  "#volunteerModal button[type='submit']"
+);
 
 // Function to disable scrolling and account for scrollbar
 function disableScroll() {
@@ -326,8 +329,9 @@ const form = document.getElementById("volunteerForm");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  // Show loader
-  loader.style.display = "block";
+  // Show loader and disable submit button
+  loader.style.display = "flex";
+  submitBtn.disabled = true;
 
   fetch(scriptURL, {
     method: "POST",
@@ -343,11 +347,8 @@ form.addEventListener("submit", (e) => {
       return response.json();
     })
     .then((data) => {
-      // Hide loader
-      loader.style.display = "none";
-
       if (data.status === "success") {
-        showMessageModal("Thank you for  showing Interest in Patha!"); // Use custom modal here
+        showMessageModal("Thank you for showing Interest in Patha!"); // Use custom modal here
         form.reset(); // Optionally reset the form
         modal.style.display = "none"; // Close modal after successful submission
         enableScroll(); // Re-enable scrolling
@@ -356,9 +357,14 @@ form.addEventListener("submit", (e) => {
       }
     })
     .catch((error) => {
-      // Hide loader
-      loader.style.display = "none";
       console.error("Error:", error);
       showMessageModal("Error submitting form!"); // Use custom modal here
+    })
+    .finally(() => {
+      // Hide loader only after showing the message modal
+      setTimeout(() => {
+        loader.style.display = "none";
+        submitBtn.disabled = false;
+      }, 500); // Add a slight delay to ensure visibility
     });
 });

@@ -57,8 +57,6 @@
           <!-- Uncomment the line below if you also wish to use an image logo -->
           <img src="assets/img/logo.png" alt="" />
         </a>
-        <!-- Loader -->
-        <div id="loader" style="display:none;">Loading...</div>
         <!-- Success/Error Message Modal -->
         <div id="messageModal" class="modal">
           <div class="modal-content">
@@ -93,10 +91,10 @@
             </li>
             <li><a href="./team.html">Team</a></li>
             <li><a href="#!" id="openModal">Volunteer</a></li>
-            <!-- <li><a href="./payment/index.html" target="_blank">Donate</a></li> -->
-            <li>
+            <li><a href="https://forms.gle/aX8SM7osTTvmtsjdA" target="_blank">Donate</a></li>
+            <!-- <li>
               <a href="#!" class="custom-tooltip" data-bs-toggle="tooltip" data-bs-title="Updating soon">Donate</a>
-            </li>
+            </li> -->
             <li><a href="#footer">Contact Us</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -340,8 +338,7 @@
         </div>
       </div>
     </section>
-
-    <section id="whatwedo" class="introduction scrollto padding-sm-own">
+    <!--<section id="whatwedo" class="introduction scrollto padding-sm-own">
       <div class="container" data-aos="fade-up" data-aos-delay="100">
         <div class="clearfix">
           <div class="section-heading">
@@ -370,7 +367,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- Services Section -->
     <section id="services" class="services section padding-sm-own">
@@ -506,6 +503,10 @@
       <div class="modal-content">
         <h2>Volunteer Registration Form <span class="close">&times;</span></h2>
 
+        <!-- Loader Element -->
+        <div id="loader" class="loader-overlay" style="display: none;">
+          <div class="loader"></div>
+        </div>
 
         <form id="volunteerForm">
           <label for="firstName">First Name <span class="asterisk">*</span></label>
