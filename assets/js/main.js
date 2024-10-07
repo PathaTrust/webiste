@@ -291,25 +291,29 @@ function enableScroll() {
 modal.style.transition = "opacity 1s ease-in-out"; // Smooth fade-in and fade-out
 modal.style.opacity = 0; // Initial hidden state
 
-window.onload = function () {
-  setTimeout(() => {
-    modal.style.display = "block"; // Set display to block
-    setTimeout(() => {
-      modal.style.opacity = 1; // Gradually change opacity to 1
-    }, 10); // Small delay to ensure the transition applies smoothly
-    disableScroll();
-  }, 1500);
-};
+// window.onload = function () {
+//   modal.style.display = "block"; // Set display to block
+//   setTimeout(() => {
+//     modal.style.opacity = 1; // Gradually change opacity to 1
+//   }, 10); // Small delay to ensure the transition applies smoothly
+//   disableScroll();
+// };
 
 // Open the modal
 btn.onclick = function () {
   modal.style.display = "block";
+  setTimeout(() => {
+    modal.style.opacity = 1; // Gradually change opacity to 1
+  }, 10);
   disableScroll();
 };
 
 // Close the modal
 span.onclick = function () {
   modal.style.display = "none";
+  setTimeout(() => {
+    modal.style.opacity = 0; // Gradually change opacity to 1
+  }, 10);
   enableScroll();
 };
 
@@ -317,6 +321,9 @@ span.onclick = function () {
 window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = "none";
+    setTimeout(() => {
+      modal.style.opacity = 0; // Gradually change opacity to 1
+    }, 10);
     enableScroll();
   }
 };
